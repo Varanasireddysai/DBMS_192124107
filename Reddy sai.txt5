@@ -1,0 +1,120 @@
+Enter password: ***
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use manoj
+Database changed
+mysql> create table students(st_name char(10),st_id int,st_ph_no char(10));
+ERROR 1050 (42S01): Table 'students' already exists
+mysql> desc students;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| st_id    | int(11)  | YES  |     | NULL    |       |
+| st_name  | char(10) | YES  |     | NULL    |       |
+| st_ph_no | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into students values(101,'sonu','978659...');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students values(102,'golu','87696...');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students values(103,'sita','78670....');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into students values(104,'ghon','6578688...');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from students;
++-------+---------+------------+
+| st_id | st_name | st_ph_no   |
++-------+---------+------------+
+|   101 | sonu    | 786787...  |
+|   102 | mohan   | 97676...   |
+|   103 | lucky   | 927837.... |
+|   104 | golu    | 6759378... |
+|   101 | sonu    | 789755...  |
+|   102 | raju    | 987658...  |
+|   103 | monu    | 76584...   |
+|   101 | sonu    | 978659...  |
+|   102 | golu    | 87696...   |
+|   103 | sita    | 78670....  |
+|   104 | ghon    | 6578688... |
++-------+---------+------------+
+11 rows in set (0.00 sec)
+
+mysql> select st_name from students;
++---------+
+| st_name |
++---------+
+| sonu    |
+| mohan   |
+| lucky   |
+| golu    |
+| sonu    |
+| raju    |
+| monu    |
+| sonu    |
+| golu    |
+| sita    |
+| ghon    |
++---------+
+11 rows in set (0.00 sec)
+
+mysql> update students set st_name='samantha' where st_id=101;
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> update students set st_ph_no='799590....' where st_id=101;
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'students' at line 1
+mysql> select * from students;
++-------+----------+------------+
+| st_id | st_name  | st_ph_no   |
++-------+----------+------------+
+|   101 | samantha | 799590.... |
+|   102 | mohan    | 97676...   |
+|   103 | lucky    | 927837.... |
+|   104 | golu     | 6759378... |
+|   101 | samantha | 799590.... |
+|   102 | raju     | 987658...  |
+|   103 | monu     | 76584...   |
+|   101 | samantha | 799590.... |
+|   102 | golu     | 87696...   |
+|   103 | sita     | 78670....  |
+|   104 | ghon     | 6578688... |
++-------+----------+------------+
+11 rows in set (0.00 sec)
+
+mysql> delete from students where st_id=101;
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> select * from students;
++-------+---------+------------+
+| st_id | st_name | st_ph_no   |
++-------+---------+------------+
+|   102 | mohan   | 97676...   |
+|   103 | lucky   | 927837.... |
+|   104 | golu    | 6759378... |
+|   102 | raju    | 987658...  |
+|   103 | monu    | 76584...   |
+|   102 | golu    | 87696...   |
+|   103 | sita    | 78670....  |
+|   104 | ghon    | 6578688... |
++-------+---------+------------+
+8 rows in set (0.00 sec)
